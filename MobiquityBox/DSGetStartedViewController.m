@@ -6,13 +6,13 @@
 //  Copyright (c) 2014 Devspark. All rights reserved.
 //
 
-#import "DSViewController.h"
+#import "DSGetStartedViewController.h"
 
-@interface DSViewController ()
+@interface DSGetStartedViewController ()
 
 @end
 
-@implementation DSViewController
+@implementation DSGetStartedViewController
 
 - (void)viewDidLoad
 {

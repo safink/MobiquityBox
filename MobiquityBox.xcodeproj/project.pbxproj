@@ -14,13 +14,16 @@
 		3A39B96A19B75DA6000CDB2A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A39B96919B75DA6000CDB2A /* main.m */; };
 		3A39B96E19B75DA6000CDB2A /* DSAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A39B96D19B75DA6000CDB2A /* DSAppDelegate.m */; };
 		3A39B97119B75DA6000CDB2A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A39B96F19B75DA6000CDB2A /* Main.storyboard */; };
-		3A39B97419B75DA6000CDB2A /* DSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A39B97319B75DA6000CDB2A /* DSViewController.m */; };
+		3A39B97419B75DA6000CDB2A /* DSGetStartedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A39B97319B75DA6000CDB2A /* DSGetStartedViewController.m */; };
 		3A39B97619B75DA6000CDB2A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A39B97519B75DA6000CDB2A /* Images.xcassets */; };
 		3A39B97D19B75DA6000CDB2A /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A39B97C19B75DA6000CDB2A /* XCTest.framework */; };
 		3A39B97E19B75DA6000CDB2A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A39B95D19B75DA6000CDB2A /* Foundation.framework */; };
 		3A39B97F19B75DA6000CDB2A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A39B96119B75DA6000CDB2A /* UIKit.framework */; };
 		3A39B98719B75DA6000CDB2A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3A39B98519B75DA6000CDB2A /* InfoPlist.strings */; };
 		3A39B98919B75DA6000CDB2A /* MobiquityBoxTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A39B98819B75DA6000CDB2A /* MobiquityBoxTests.m */; };
+		3A39B99319B768BC000CDB2A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A39B99219B768BC000CDB2A /* QuartzCore.framework */; };
+		3A39B99519B768E9000CDB2A /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A39B99419B768E9000CDB2A /* Security.framework */; };
+		3A39B99719B76932000CDB2A /* DropboxSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A39B99619B76932000CDB2A /* DropboxSDK.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,14 +48,17 @@
 		3A39B96C19B75DA6000CDB2A /* DSAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSAppDelegate.h; sourceTree = "<group>"; };
 		3A39B96D19B75DA6000CDB2A /* DSAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSAppDelegate.m; sourceTree = "<group>"; };
 		3A39B97019B75DA6000CDB2A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		3A39B97219B75DA6000CDB2A /* DSViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSViewController.h; sourceTree = "<group>"; };
-		3A39B97319B75DA6000CDB2A /* DSViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSViewController.m; sourceTree = "<group>"; };
+		3A39B97219B75DA6000CDB2A /* DSGetStartedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSGetStartedViewController.h; sourceTree = "<group>"; };
+		3A39B97319B75DA6000CDB2A /* DSGetStartedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSGetStartedViewController.m; sourceTree = "<group>"; };
 		3A39B97519B75DA6000CDB2A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		3A39B97B19B75DA6000CDB2A /* MobiquityBoxTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MobiquityBoxTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A39B97C19B75DA6000CDB2A /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		3A39B98419B75DA6000CDB2A /* MobiquityBoxTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MobiquityBoxTests-Info.plist"; sourceTree = "<group>"; };
 		3A39B98619B75DA6000CDB2A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		3A39B98819B75DA6000CDB2A /* MobiquityBoxTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MobiquityBoxTests.m; sourceTree = "<group>"; };
+		3A39B99219B768BC000CDB2A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		3A39B99419B768E9000CDB2A /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		3A39B99619B76932000CDB2A /* DropboxSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DropboxSDK.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +66,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A39B99719B76932000CDB2A /* DropboxSDK.framework in Frameworks */,
+				3A39B99519B768E9000CDB2A /* Security.framework in Frameworks */,
+				3A39B99319B768BC000CDB2A /* QuartzCore.framework in Frameworks */,
 				3A39B96019B75DA6000CDB2A /* CoreGraphics.framework in Frameworks */,
 				3A39B96219B75DA6000CDB2A /* UIKit.framework in Frameworks */,
 				3A39B95E19B75DA6000CDB2A /* Foundation.framework in Frameworks */,
@@ -101,6 +110,9 @@
 		3A39B95C19B75DA6000CDB2A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3A39B99619B76932000CDB2A /* DropboxSDK.framework */,
+				3A39B99419B768E9000CDB2A /* Security.framework */,
+				3A39B99219B768BC000CDB2A /* QuartzCore.framework */,
 				3A39B95D19B75DA6000CDB2A /* Foundation.framework */,
 				3A39B95F19B75DA6000CDB2A /* CoreGraphics.framework */,
 				3A39B96119B75DA6000CDB2A /* UIKit.framework */,
@@ -115,8 +127,8 @@
 				3A39B96C19B75DA6000CDB2A /* DSAppDelegate.h */,
 				3A39B96D19B75DA6000CDB2A /* DSAppDelegate.m */,
 				3A39B96F19B75DA6000CDB2A /* Main.storyboard */,
-				3A39B97219B75DA6000CDB2A /* DSViewController.h */,
-				3A39B97319B75DA6000CDB2A /* DSViewController.m */,
+				3A39B97219B75DA6000CDB2A /* DSGetStartedViewController.h */,
+				3A39B97319B75DA6000CDB2A /* DSGetStartedViewController.m */,
 				3A39B97519B75DA6000CDB2A /* Images.xcassets */,
 				3A39B96419B75DA6000CDB2A /* Supporting Files */,
 			);
@@ -251,7 +263,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A39B96A19B75DA6000CDB2A /* main.m in Sources */,
-				3A39B97419B75DA6000CDB2A /* DSViewController.m in Sources */,
+				3A39B97419B75DA6000CDB2A /* DSGetStartedViewController.m in Sources */,
 				3A39B96E19B75DA6000CDB2A /* DSAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -377,6 +389,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MobiquityBox/MobiquityBox-Prefix.pch";
 				INFOPLIST_FILE = "MobiquityBox/MobiquityBox-Info.plist";
@@ -390,6 +406,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MobiquityBox/MobiquityBox-Prefix.pch";
 				INFOPLIST_FILE = "MobiquityBox/MobiquityBox-Info.plist";
