@@ -1,0 +1,472 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3A39B95E19B75DA6000CDB2A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A39B95D19B75DA6000CDB2A /* Foundation.framework */; };
+		3A39B96019B75DA6000CDB2A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A39B95F19B75DA6000CDB2A /* CoreGraphics.framework */; };
+		3A39B96219B75DA6000CDB2A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A39B96119B75DA6000CDB2A /* UIKit.framework */; };
+		3A39B96819B75DA6000CDB2A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3A39B96619B75DA6000CDB2A /* InfoPlist.strings */; };
+		3A39B96A19B75DA6000CDB2A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A39B96919B75DA6000CDB2A /* main.m */; };
+		3A39B96E19B75DA6000CDB2A /* DSAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A39B96D19B75DA6000CDB2A /* DSAppDelegate.m */; };
+		3A39B97119B75DA6000CDB2A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A39B96F19B75DA6000CDB2A /* Main.storyboard */; };
+		3A39B97419B75DA6000CDB2A /* DSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A39B97319B75DA6000CDB2A /* DSViewController.m */; };
+		3A39B97619B75DA6000CDB2A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A39B97519B75DA6000CDB2A /* Images.xcassets */; };
+		3A39B97D19B75DA6000CDB2A /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A39B97C19B75DA6000CDB2A /* XCTest.framework */; };
+		3A39B97E19B75DA6000CDB2A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A39B95D19B75DA6000CDB2A /* Foundation.framework */; };
+		3A39B97F19B75DA6000CDB2A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A39B96119B75DA6000CDB2A /* UIKit.framework */; };
+		3A39B98719B75DA6000CDB2A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3A39B98519B75DA6000CDB2A /* InfoPlist.strings */; };
+		3A39B98919B75DA6000CDB2A /* MobiquityBoxTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A39B98819B75DA6000CDB2A /* MobiquityBoxTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3A39B98019B75DA6000CDB2A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3A39B95219B75DA6000CDB2A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3A39B95919B75DA6000CDB2A;
+			remoteInfo = MobiquityBox;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		3A39B95A19B75DA6000CDB2A /* MobiquityBox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MobiquityBox.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A39B95D19B75DA6000CDB2A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		3A39B95F19B75DA6000CDB2A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		3A39B96119B75DA6000CDB2A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		3A39B96519B75DA6000CDB2A /* MobiquityBox-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MobiquityBox-Info.plist"; sourceTree = "<group>"; };
+		3A39B96719B75DA6000CDB2A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		3A39B96919B75DA6000CDB2A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		3A39B96B19B75DA6000CDB2A /* MobiquityBox-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MobiquityBox-Prefix.pch"; sourceTree = "<group>"; };
+		3A39B96C19B75DA6000CDB2A /* DSAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSAppDelegate.h; sourceTree = "<group>"; };
+		3A39B96D19B75DA6000CDB2A /* DSAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSAppDelegate.m; sourceTree = "<group>"; };
+		3A39B97019B75DA6000CDB2A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		3A39B97219B75DA6000CDB2A /* DSViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSViewController.h; sourceTree = "<group>"; };
+		3A39B97319B75DA6000CDB2A /* DSViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSViewController.m; sourceTree = "<group>"; };
+		3A39B97519B75DA6000CDB2A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		3A39B97B19B75DA6000CDB2A /* MobiquityBoxTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MobiquityBoxTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A39B97C19B75DA6000CDB2A /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		3A39B98419B75DA6000CDB2A /* MobiquityBoxTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MobiquityBoxTests-Info.plist"; sourceTree = "<group>"; };
+		3A39B98619B75DA6000CDB2A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		3A39B98819B75DA6000CDB2A /* MobiquityBoxTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MobiquityBoxTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3A39B95719B75DA6000CDB2A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3A39B96019B75DA6000CDB2A /* CoreGraphics.framework in Frameworks */,
+				3A39B96219B75DA6000CDB2A /* UIKit.framework in Frameworks */,
+				3A39B95E19B75DA6000CDB2A /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3A39B97819B75DA6000CDB2A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3A39B97D19B75DA6000CDB2A /* XCTest.framework in Frameworks */,
+				3A39B97F19B75DA6000CDB2A /* UIKit.framework in Frameworks */,
+				3A39B97E19B75DA6000CDB2A /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3A39B95119B75DA6000CDB2A = {
+			isa = PBXGroup;
+			children = (
+				3A39B96319B75DA6000CDB2A /* MobiquityBox */,
+				3A39B98219B75DA6000CDB2A /* MobiquityBoxTests */,
+				3A39B95C19B75DA6000CDB2A /* Frameworks */,
+				3A39B95B19B75DA6000CDB2A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3A39B95B19B75DA6000CDB2A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3A39B95A19B75DA6000CDB2A /* MobiquityBox.app */,
+				3A39B97B19B75DA6000CDB2A /* MobiquityBoxTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3A39B95C19B75DA6000CDB2A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3A39B95D19B75DA6000CDB2A /* Foundation.framework */,
+				3A39B95F19B75DA6000CDB2A /* CoreGraphics.framework */,
+				3A39B96119B75DA6000CDB2A /* UIKit.framework */,
+				3A39B97C19B75DA6000CDB2A /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3A39B96319B75DA6000CDB2A /* MobiquityBox */ = {
+			isa = PBXGroup;
+			children = (
+				3A39B96C19B75DA6000CDB2A /* DSAppDelegate.h */,
+				3A39B96D19B75DA6000CDB2A /* DSAppDelegate.m */,
+				3A39B96F19B75DA6000CDB2A /* Main.storyboard */,
+				3A39B97219B75DA6000CDB2A /* DSViewController.h */,
+				3A39B97319B75DA6000CDB2A /* DSViewController.m */,
+				3A39B97519B75DA6000CDB2A /* Images.xcassets */,
+				3A39B96419B75DA6000CDB2A /* Supporting Files */,
+			);
+			path = MobiquityBox;
+			sourceTree = "<group>";
+		};
+		3A39B96419B75DA6000CDB2A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3A39B96519B75DA6000CDB2A /* MobiquityBox-Info.plist */,
+				3A39B96619B75DA6000CDB2A /* InfoPlist.strings */,
+				3A39B96919B75DA6000CDB2A /* main.m */,
+				3A39B96B19B75DA6000CDB2A /* MobiquityBox-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3A39B98219B75DA6000CDB2A /* MobiquityBoxTests */ = {
+			isa = PBXGroup;
+			children = (
+				3A39B98819B75DA6000CDB2A /* MobiquityBoxTests.m */,
+				3A39B98319B75DA6000CDB2A /* Supporting Files */,
+			);
+			path = MobiquityBoxTests;
+			sourceTree = "<group>";
+		};
+		3A39B98319B75DA6000CDB2A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3A39B98419B75DA6000CDB2A /* MobiquityBoxTests-Info.plist */,
+				3A39B98519B75DA6000CDB2A /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3A39B95919B75DA6000CDB2A /* MobiquityBox */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3A39B98C19B75DA6000CDB2A /* Build configuration list for PBXNativeTarget "MobiquityBox" */;
+			buildPhases = (
+				3A39B95619B75DA6000CDB2A /* Sources */,
+				3A39B95719B75DA6000CDB2A /* Frameworks */,
+				3A39B95819B75DA6000CDB2A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MobiquityBox;
+			productName = MobiquityBox;
+			productReference = 3A39B95A19B75DA6000CDB2A /* MobiquityBox.app */;
+			productType = "com.apple.product-type.application";
+		};
+		3A39B97A19B75DA6000CDB2A /* MobiquityBoxTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3A39B98F19B75DA6000CDB2A /* Build configuration list for PBXNativeTarget "MobiquityBoxTests" */;
+			buildPhases = (
+				3A39B97719B75DA6000CDB2A /* Sources */,
+				3A39B97819B75DA6000CDB2A /* Frameworks */,
+				3A39B97919B75DA6000CDB2A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3A39B98119B75DA6000CDB2A /* PBXTargetDependency */,
+			);
+			name = MobiquityBoxTests;
+			productName = MobiquityBoxTests;
+			productReference = 3A39B97B19B75DA6000CDB2A /* MobiquityBoxTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3A39B95219B75DA6000CDB2A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = DS;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = Devspark;
+				TargetAttributes = {
+					3A39B97A19B75DA6000CDB2A = {
+						TestTargetID = 3A39B95919B75DA6000CDB2A;
+					};
+				};
+			};
+			buildConfigurationList = 3A39B95519B75DA6000CDB2A /* Build configuration list for PBXProject "MobiquityBox" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 3A39B95119B75DA6000CDB2A;
+			productRefGroup = 3A39B95B19B75DA6000CDB2A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3A39B95919B75DA6000CDB2A /* MobiquityBox */,
+				3A39B97A19B75DA6000CDB2A /* MobiquityBoxTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3A39B95819B75DA6000CDB2A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3A39B97619B75DA6000CDB2A /* Images.xcassets in Resources */,
+				3A39B96819B75DA6000CDB2A /* InfoPlist.strings in Resources */,
+				3A39B97119B75DA6000CDB2A /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3A39B97919B75DA6000CDB2A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3A39B98719B75DA6000CDB2A /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3A39B95619B75DA6000CDB2A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3A39B96A19B75DA6000CDB2A /* main.m in Sources */,
+				3A39B97419B75DA6000CDB2A /* DSViewController.m in Sources */,
+				3A39B96E19B75DA6000CDB2A /* DSAppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3A39B97719B75DA6000CDB2A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3A39B98919B75DA6000CDB2A /* MobiquityBoxTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3A39B98119B75DA6000CDB2A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3A39B95919B75DA6000CDB2A /* MobiquityBox */;
+			targetProxy = 3A39B98019B75DA6000CDB2A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		3A39B96619B75DA6000CDB2A /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3A39B96719B75DA6000CDB2A /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		3A39B96F19B75DA6000CDB2A /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3A39B97019B75DA6000CDB2A /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		3A39B98519B75DA6000CDB2A /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3A39B98619B75DA6000CDB2A /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3A39B98A19B75DA6000CDB2A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		3A39B98B19B75DA6000CDB2A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3A39B98D19B75DA6000CDB2A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MobiquityBox/MobiquityBox-Prefix.pch";
+				INFOPLIST_FILE = "MobiquityBox/MobiquityBox-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		3A39B98E19B75DA6000CDB2A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MobiquityBox/MobiquityBox-Prefix.pch";
+				INFOPLIST_FILE = "MobiquityBox/MobiquityBox-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		3A39B99019B75DA6000CDB2A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/MobiquityBox.app/MobiquityBox";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MobiquityBox/MobiquityBox-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "MobiquityBoxTests/MobiquityBoxTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		3A39B99119B75DA6000CDB2A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/MobiquityBox.app/MobiquityBox";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MobiquityBox/MobiquityBox-Prefix.pch";
+				INFOPLIST_FILE = "MobiquityBoxTests/MobiquityBoxTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3A39B95519B75DA6000CDB2A /* Build configuration list for PBXProject "MobiquityBox" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3A39B98A19B75DA6000CDB2A /* Debug */,
+				3A39B98B19B75DA6000CDB2A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3A39B98C19B75DA6000CDB2A /* Build configuration list for PBXNativeTarget "MobiquityBox" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3A39B98D19B75DA6000CDB2A /* Debug */,
+				3A39B98E19B75DA6000CDB2A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		3A39B98F19B75DA6000CDB2A /* Build configuration list for PBXNativeTarget "MobiquityBoxTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3A39B99019B75DA6000CDB2A /* Debug */,
+				3A39B99119B75DA6000CDB2A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3A39B95219B75DA6000CDB2A /* Project object */;
+}
