@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DSAppDelegate : UIResponder <UIApplicationDelegate>
+@interface DSAppDelegate : UIResponder <UIApplicationDelegate> {
+    NSString *relinkUserId;
+}
 
 @property (strong, nonatomic) UIWindow *window;
 

@@ -8,6 +8,21 @@
 
 #import <UIKit/UIKit.h>
 
+/*
+@protocol DSGetStartedDelegate
+
+- (void)sessionDidAuthenticate;
+
+@end
+ */
+
+
 @interface DSGetStartedViewController : UIViewController
+
+@property (strong, nonatomic) IBOutlet UIButton *btnGetStarted;
+
+
+//Methods
+- (IBAction)letsGetStarted:(id)sender;
 
 @end

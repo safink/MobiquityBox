@@ -12,7 +12,7 @@
 		3A39B96219B75DA6000CDB2A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A39B96119B75DA6000CDB2A /* UIKit.framework */; };
 		3A39B96819B75DA6000CDB2A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3A39B96619B75DA6000CDB2A /* InfoPlist.strings */; };
 		3A39B96A19B75DA6000CDB2A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A39B96919B75DA6000CDB2A /* main.m */; };
-		3A39B96E19B75DA6000CDB2A /* DSAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A39B96D19B75DA6000CDB2A /* DSAppDelegate.m */; };
+		3A39B96E19B75DA6000CDB2A /* DSAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A39B96D19B75DA6000CDB2A /* DSAppDelegate.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		3A39B97119B75DA6000CDB2A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A39B96F19B75DA6000CDB2A /* Main.storyboard */; };
 		3A39B97419B75DA6000CDB2A /* DSGetStartedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A39B97319B75DA6000CDB2A /* DSGetStartedViewController.m */; };
 		3A39B97619B75DA6000CDB2A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A39B97519B75DA6000CDB2A /* Images.xcassets */; };

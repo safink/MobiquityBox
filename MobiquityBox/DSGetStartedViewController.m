@@ -7,6 +7,7 @@
 //
 
 #import "DSGetStartedViewController.h"
+#import <DropboxSDK/DropboxSDK.h>
 
 @interface DSGetStartedViewController ()
 
@@ -17,13 +18,53 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+	
+    // Do any additional setup after loading the view, typically from a nib.
+    
 }
+
+
+- (void)viewWillAppear:(BOOL)animated{
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(sessionDidAuthenticate:)
+                                                 name:@"SESSION_AUTHENTICATED"
+                                               object:nil];
+}
+
+- (void)viewDidDisappear:(BOOL)animated{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (IBAction)letsGetStarted:(id)sender {
+    
+    if (![[DBSession sharedSession] isLinked]) {
+		[[DBSession sharedSession] linkFromController:self];
+    } else {
+        
+        [[DBSession sharedSession] unlinkAll];
+        UIAlertView *unlinkAlert = [[UIAlertView alloc]
+                                    initWithTitle:@"Account Unlinked!" message:@"Your dropbox account has been unlinked"
+                                    delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        
+        [unlinkAlert show];
+        
+//        [self updateButtons];
+    }
+
+}
+
+
+- (void)sessionDidAuthenticate:(NSNotification *)notification{
+    NSLog(@"Entering collection view");
+}
+
+
 
 @end
