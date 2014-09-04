@@ -26,6 +26,7 @@
 		3A39B99719B76932000CDB2A /* DropboxSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A39B99619B76932000CDB2A /* DropboxSDK.framework */; };
 		3A39B99A19B7B154000CDB2A /* DSAlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A39B99919B7B154000CDB2A /* DSAlbumViewController.m */; };
 		3A39B99D19B88133000CDB2A /* DSPhotoThumbController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A39B99C19B88133000CDB2A /* DSPhotoThumbController.m */; };
+		3A39B9A019B89AD2000CDB2A /* DSPhotoSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A39B99F19B89AD2000CDB2A /* DSPhotoSelectionViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,8 @@
 		3A39B99919B7B154000CDB2A /* DSAlbumViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSAlbumViewController.m; sourceTree = "<group>"; };
 		3A39B99B19B88133000CDB2A /* DSPhotoThumbController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSPhotoThumbController.h; sourceTree = "<group>"; };
 		3A39B99C19B88133000CDB2A /* DSPhotoThumbController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSPhotoThumbController.m; sourceTree = "<group>"; };
+		3A39B99E19B89AD2000CDB2A /* DSPhotoSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSPhotoSelectionViewController.h; sourceTree = "<group>"; };
+		3A39B99F19B89AD2000CDB2A /* DSPhotoSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSPhotoSelectionViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,10 +140,12 @@
 				3A39B97319B75DA6000CDB2A /* DSGetStartedViewController.m */,
 				3A39B99819B7B154000CDB2A /* DSAlbumViewController.h */,
 				3A39B99919B7B154000CDB2A /* DSAlbumViewController.m */,
-				3A39B97519B75DA6000CDB2A /* Images.xcassets */,
-				3A39B96419B75DA6000CDB2A /* Supporting Files */,
 				3A39B99B19B88133000CDB2A /* DSPhotoThumbController.h */,
 				3A39B99C19B88133000CDB2A /* DSPhotoThumbController.m */,
+				3A39B97519B75DA6000CDB2A /* Images.xcassets */,
+				3A39B96419B75DA6000CDB2A /* Supporting Files */,
+				3A39B99E19B89AD2000CDB2A /* DSPhotoSelectionViewController.h */,
+				3A39B99F19B89AD2000CDB2A /* DSPhotoSelectionViewController.m */,
 			);
 			path = MobiquityBox;
 			sourceTree = "<group>";
@@ -272,6 +277,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A39B9A019B89AD2000CDB2A /* DSPhotoSelectionViewController.m in Sources */,
 				3A39B96A19B75DA6000CDB2A /* main.m in Sources */,
 				3A39B99A19B7B154000CDB2A /* DSAlbumViewController.m in Sources */,
 				3A39B97419B75DA6000CDB2A /* DSGetStartedViewController.m in Sources */,

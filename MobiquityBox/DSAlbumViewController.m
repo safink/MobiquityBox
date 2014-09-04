@@ -8,6 +8,7 @@
 
 #import "DSAlbumViewController.h"
 #import "DSPhotoThumbController.h"
+#import "DSPhotoSelectionViewController.h"
 #import <DropboxSDK/DropboxSDK.h>
 
 @interface DSAlbumViewController () <DBRestClientDelegate>
@@ -33,23 +34,32 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+   
+    self.title = @"Photo Album";
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    //First time
     if (photoPaths == nil){
         [self fetchRemotePictures];
     }
     
-    
+    //Creating button for taking snapshot
+    UIBarButtonItem *btnCamera = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCamera target:self action:@selector(takeSnaphot)];
+    self.navigationItem.rightBarButtonItem = btnCamera;
     
     
 }
 
+
+- (void)viewWillAppear:(BOOL)animated{
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(uploadFileToDropbox:)
+                                                 name:@"UPLOAD_DROPBOX"
+                                               object:nil];
+}
+
+
 - (void)viewWillDisappear:(BOOL)animated {
-    restClient = nil;
+    //restClient = nil;
 }
 
 - (void)didReceiveMemoryWarning
@@ -57,6 +67,28 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+#pragma mark - Class methods
+- (void)takeSnaphot{
+    DSPhotoSelectionViewController *photoSelectionVC = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"DSPhotoSelectionViewController"];
+    
+    [self.navigationController pushViewController:photoSelectionVC animated:YES];
+    
+}
+
+- (void)uploadFileToDropbox:(NSNotification *)notification{
+    
+    NSDictionary *imgMeta = notification.userInfo;
+    
+    NSString *imgName = (NSString *)[imgMeta valueForKey:@"filename"];
+    NSString *imgPath = (NSString *)[imgMeta valueForKey:@"filepath"];
+    NSLog(@"imgpath = %@",imgPath);
+
+    NSString *destDir = @"/";
+    [restClient uploadFile:imgName toPath:destDir withParentRev:nil fromPath:imgPath];
+}
+
+
 
 #pragma mark - Table view data source
 
@@ -106,26 +138,13 @@
 }
 
 
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
-
 #pragma mark - Load directory and picture methods
 - (void)fetchRemotePictures{
     NSString *photosRoot = @"/";
     [self.restClient loadMetadata:photosRoot withHash:photosHash];
 }
 
-//Temporary path where to put
+//Temporary path where to put remote photo
 - (NSString*)photoPath {
     return [NSTemporaryDirectory() stringByAppendingPathComponent:@"photo.jpg"];
 }
@@ -161,7 +180,6 @@
     //Added photos to the list
     photoPaths = newPhotoPaths;
     [self.tableView reloadData];
-//    [self loadRandomPhoto];
 }
 
 - (void)restClient:(DBRestClient*)client metadataUnchangedAtPath:(NSString*)path {
@@ -185,13 +203,15 @@
     [self.navigationController pushViewController:photoViewer animated:YES];
     
     //[self setWorking:NO];
-    //imageView.image = [UIImage imageWithContentsOfFile:destPath];
+
 }
 
 - (void)restClient:(DBRestClient*)client loadThumbnailFailedWithError:(NSError*)error {
     //[self setWorking:NO];
     //[self displayError];
 }
+
+
 
 
 

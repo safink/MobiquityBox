@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+
 @class DBRestClient;
 
 @interface DSAlbumViewController : UITableViewController{
