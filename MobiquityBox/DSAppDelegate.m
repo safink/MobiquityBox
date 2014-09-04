@@ -47,15 +47,6 @@
     
 	
     
-    //rootViewController.photoViewController = [[PhotoViewController new] autorelease];
-    //if ([[DBSession sharedSession] isLinked]) {
-        //navigationController.viewControllers =        [NSArray arrayWithObjects:rootViewController, rootViewController.photoViewController, nil];
-    //}
-    
-    // Add the navigation controller's view to the window and display.
-    //[window addSubview:navigationController.view];
-    //[window makeKeyAndVisible];
-	
 	
     /*
     NSURL *launchURL = [launchOptions objectForKey:UIApplicationLaunchOptionsURLKey];

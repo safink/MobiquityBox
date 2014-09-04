@@ -31,9 +31,6 @@
                                                object:nil];
 }
 
-- (void)viewDidDisappear:(BOOL)animated{
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
 
 
 - (void)didReceiveMemoryWarning
@@ -62,7 +59,10 @@
 
 
 - (void)sessionDidAuthenticate:(NSNotification *)notification{
-    NSLog(@"Entering collection view");
+    NSLog(@"Session Authenticated succesfully");
+    UIViewController *albumVC = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"DSAlbumViewController"];
+    [self.navigationController pushViewController:albumVC animated:YES];
+    
 }
 
 
