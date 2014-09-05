@@ -8,21 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
-/*
-@protocol DSGetStartedDelegate
-
-- (void)sessionDidAuthenticate;
-
-@end
- */
-
 
 @interface DSGetStartedViewController : UIViewController
 
 @property (strong, nonatomic) IBOutlet UIButton *btnGetStarted;
+@property (strong, nonatomic) IBOutlet UIButton *btnUnlink;
 
 
 //Methods
 - (IBAction)letsGetStarted:(id)sender;
+- (IBAction)unlinkAccount:(id)sender;
 
 @end

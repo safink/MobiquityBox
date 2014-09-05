@@ -116,6 +116,7 @@
                 [self presentViewController:imagePicker animated:YES completion:nil];
             }else{
                 //Display camera unavailable error (only with simulator)
+                [self cameraUnavailable];
             }
             break;
         case 1:
@@ -136,8 +137,7 @@
     NSString *filename = _txtPhotoFilename.text;
     
     //Display error (missing name)
-    if (!filename){
-        
+    if (!filename || !filename.length){
         [self missingPhotoName];
         return;
     }
@@ -178,8 +178,21 @@
 }
 
 - (void)missingPhotoName{
-    //UIalert with error
+    UIAlertView *missing = [[UIAlertView alloc]
+                            initWithTitle:@"Name missing!" message:@"Please provide a photo name"
+                            delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    
+    [missing show];
 }
+
+- (void)cameraUnavailable{
+    UIAlertView *cameraMissing = [[UIAlertView alloc]
+                            initWithTitle:@"Camera missing!" message:@"This device doesn't have a built-in camera."
+                            delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    
+    [cameraMissing show];
+}
+
 
 
 #pragma mark - UITextFieldDelegate Methods
@@ -232,11 +245,11 @@
 - (void)uploadImageFailedWithError:(NSError *)error{
     [alertViewWithProgressbar hide];
     [self toggleSharingAvailability]; //enable share
-    UIAlertView *success = [[UIAlertView alloc]
+    UIAlertView *alertError = [[UIAlertView alloc]
                             initWithTitle:@"Sorry..." message:@"Your photo couldn't be uploaded. Please try again"
                             delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
     
-    [success show];
+    [alertError show];
 }
 
 

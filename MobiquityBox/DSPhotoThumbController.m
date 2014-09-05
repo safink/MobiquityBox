@@ -14,7 +14,9 @@
 
 @end
 
-@implementation DSPhotoThumbController
+@implementation DSPhotoThumbController{
+    BOOL working;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -28,11 +30,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    
-    //self.photoThumbImgView.image = self.thumbnail;
     [[DSDropboxAPI sharedInstance] setDelegate:self];
+    _activityIndicator.hidesWhenStopped = YES;
     [self loadImage];
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [[DSDropboxAPI sharedInstance] setDelegate:self];
 }
 
 - (void)didReceiveMemoryWarning
@@ -43,6 +47,7 @@
 
 
 - (void)loadImage{
+    [self setWorking:YES];
     [[DSDropboxAPI sharedInstance] loadThumbnail:_currentPhotoPath ofSize:@"iphone_bestfit" intoPath:[self photoPath]];
 }
 
@@ -55,25 +60,27 @@
 
 #pragma mark - DSDropboxAPIDelegate Methods
 - (void)didDownloadThumbnail:(UIImage *)thumbnail inPath:(NSString *)destPath{
+    [self setWorking:NO];
     self.thumbnail = [UIImage imageWithContentsOfFile:destPath];
     self.photoThumbImgView.image = self.thumbnail;
 }
 
 - (void)loadThumbnailFailedWithError:(NSError *)error{
-    //[self setWorking:NO];
+    [self setWorking:NO];
     //[self displayError];
 }
 
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)setWorking:(BOOL)isWorking {
+    if (working == isWorking) return;
+    working = isWorking;
+    
+    if (working) {
+        [_activityIndicator startAnimating];
+    } else {
+        [_activityIndicator stopAnimating];
+    }
 }
-*/
+
+
 
 @end

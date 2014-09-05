@@ -20,11 +20,14 @@
     [super viewDidLoad];
 	
     // Do any additional setup after loading the view, typically from a nib.
+    //self.navigationController.navigationBar.hidden = YES;
+
     
 }
 
 
 - (void)viewWillAppear:(BOOL)animated{
+    _btnUnlink.enabled = [[DBSession sharedSession] isLinked];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(sessionDidAuthenticate:)
                                                  name:@"SESSION_AUTHENTICATED"
@@ -43,26 +46,31 @@
     
     if (![[DBSession sharedSession] isLinked]) {
 		[[DBSession sharedSession] linkFromController:self];
-    } else {
-        
-        
-        [[DBSession sharedSession] unlinkAll];
-        UIAlertView *unlinkAlert = [[UIAlertView alloc]
-                                    initWithTitle:@"Account Unlinked!" message:@"Your dropbox account has been unlinked"
-                                    delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        
-        [unlinkAlert show];
-        
+    }else{
+        [self goToAlbum];
     }
 
+}
+
+- (IBAction)unlinkAccount:(id)sender {
+    [[DBSession sharedSession] unlinkAll];
+    _btnUnlink.enabled = NO;
+    UIAlertView *unlinkAlert = [[UIAlertView alloc]
+                                initWithTitle:@"Account Unlinked!" message:@"Your dropbox account has been unlinked"
+                                delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    
+    [unlinkAlert show];
 }
 
 
 - (void)sessionDidAuthenticate:(NSNotification *)notification{
     NSLog(@"Session Authenticated succesfully");
+    [self goToAlbum];
+}
+
+- (void)goToAlbum{
     UIViewController *albumVC = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"DSAlbumViewController"];
     [self.navigationController pushViewController:albumVC animated:YES];
-    
 }
 
 

@@ -12,6 +12,7 @@
 
 @interface DSPhotoThumbController : UIViewController
 
+@property (strong, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (strong, nonatomic) IBOutlet UIImageView *photoThumbImgView;
 @property (nonatomic,copy) NSString *currentPhotoPath;
 @property (strong, nonatomic) UIImage *thumbnail;

@@ -17,6 +17,7 @@
 @end
 
 @implementation DSAlbumViewController{
+    UIRefreshControl *refreshControl;
     NSArray *photoPaths;
     NSString *photosHash;
     NSString *currentPhotoPath;
@@ -45,21 +46,27 @@
         [self fetchRemotePictures];
     }
     
+    //Pull to refresh
+    refreshControl = [[UIRefreshControl alloc]init];
+    
+    [self.tableView addSubview:refreshControl];
+    [refreshControl addTarget:self action:@selector(fetchRemotePictures) forControlEvents:UIControlEventValueChanged];
+    
     //Creating button for taking snapshot
     UIBarButtonItem *btnCamera = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCamera target:self action:@selector(takeSnaphot)];
     self.navigationItem.rightBarButtonItem = btnCamera;
-    
+   
     
 }
 
 
 - (void)viewWillAppear:(BOOL)animated{
-//[[DSDropboxAPI sharedInstance] setDelegate:self];
+  [[DSDropboxAPI sharedInstance] setDelegate:self];
 }
 
 
 - (void)viewWillDisappear:(BOOL)animated {
-    //[[DSDropboxAPI sharedInstance] setDelegate:nil];
+  [[DSDropboxAPI sharedInstance] setDelegate:nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -108,24 +115,6 @@
 }
 
 
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return NO;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    //To-Do: Check if selected cell is a directory
-    DSPhotoThumbController *photoViewer = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"DSPhotoThumbController"];
-    
-    [photoViewer setCurrentPhotoPath:[photoPaths objectAtIndex:indexPath.row]];
-    
-    [self.navigationController pushViewController:photoViewer animated:YES];
-}
-
-
 #pragma mark - Load directory and picture methods
 - (void)fetchRemotePictures{
     NSString *photosRoot = @"/";
@@ -135,29 +124,44 @@
 
 #pragma mark - DSDropboxAPIDelegate
 - (void)didLoadMetadata:(NSString *)currentHash withData:(NSArray *)data{
-    NSLog(@"Data loaded");
     //Added photos to the list
     photosHash = currentHash;
     photoPaths = data;
-    [self.tableView reloadData];
+    
+    [refreshControl endRefreshing]; //stop pull to refresh
+    [self.tableView reloadData];    //reload data
    
 }
-- (void)didDownloadThumbnail:(UIImage *)thumbnail inPath:(NSString *)destPath{
-    UIImage *imageThumb = [UIImage imageWithContentsOfFile:destPath];
-    
-    DSPhotoThumbController *photoViewer = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"DSPhotoThumbController"];
-    
-    [photoViewer setThumbnail:imageThumb];
-    
-    [self.navigationController pushViewController:photoViewer animated:YES];
-}
+
 
 - (void)loadMetadataFailedWithError:(NSError *)error{
     NSLog(@"restClient:loadMetadataFailedWithError: %@", [error localizedDescription]);
-    //[self displayError];
-    //[self setWorking:NO];
+    [self displayMetadataError];
 }
 
+- (void)displayMetadataError{
+    UIAlertView *alertError = [[UIAlertView alloc]
+                               initWithTitle:@"Sorry..." message:@"We couldn't fetch the photos"
+                               delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    
+    [alertError show];
+}
+
+
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+ {
+     //To-Do: Check if selected cell is a directory
+     if ([[segue identifier] isEqualToString: @"LoadPhotoSegue"]) {
+         NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
+         
+         //Get the selected object in order to fill out the detail view
+         DSPhotoThumbController *photoViewer = (DSPhotoThumbController *)[segue destinationViewController];
+         [photoViewer setCurrentPhotoPath:[photoPaths objectAtIndex:indexPath.row]];
+     }
+}
 
 
 
