@@ -45,6 +45,7 @@
 		[[DBSession sharedSession] linkFromController:self];
     } else {
         
+        
         [[DBSession sharedSession] unlinkAll];
         UIAlertView *unlinkAlert = [[UIAlertView alloc]
                                     initWithTitle:@"Account Unlinked!" message:@"Your dropbox account has been unlinked"
@@ -52,7 +53,6 @@
         
         [unlinkAlert show];
         
-//        [self updateButtons];
     }
 
 }

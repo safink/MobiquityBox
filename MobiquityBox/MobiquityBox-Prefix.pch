@@ -13,8 +13,5 @@
 #ifdef __OBJC__
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
+    #import "DSConstants.h"
 #endif
-
-
-#define DROPBOX_APP_KEY @"97ymzeraw2h6z8e"
-#define DROPBOX_APP_SECRET @"2i1g7tu4yvuw6c9"

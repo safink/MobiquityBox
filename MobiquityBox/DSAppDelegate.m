@@ -27,38 +27,21 @@
     
     
     // Dropbox App Key credentials
-    NSString* appKey = DROPBOX_APP_KEY;
-	NSString* appSecret = DROPBOX_APP_SECRET;
 	NSString *root = kDBRootAppFolder; // Should be set to either kDBRootAppFolder or kDBRootDropbox
 
 		
 	//Checking credentials and permissions
-    [self checkForCredentialsErrors:appKey withSecret:appSecret andRoot:root];
+    [self checkForCredentialsErrors:kDropboxAppKey withSecret:kDropboxAppSecret andRoot:root];
     
 	
     // DBSessionDelegate methods allow you to handle re-authenticating
-	DBSession* session = [[DBSession alloc] initWithAppKey:appKey appSecret:appSecret root:root];
+	DBSession* session = [[DBSession alloc] initWithAppKey:kDropboxAppKey appSecret:kDropboxAppSecret root:root];
 	session.delegate = self;
 	[DBSession setSharedSession:session];
     [session release];
 	
     //Setting network delegate
 	[DBRequest setNetworkRequestDelegate:self];
-    
-	
-    
-	
-    /*
-    NSURL *launchURL = [launchOptions objectForKey:UIApplicationLaunchOptionsURLKey];
-	NSInteger majorVersion =
-    [[[[[UIDevice currentDevice] systemVersion] componentsSeparatedByString:@"."] objectAtIndex:0] integerValue];
-	if (launchURL && majorVersion < 4) {
-		// Pre-iOS 4.0 won't call application:handleOpenURL; this code is only needed if you support
-		// iOS versions 3.2 or below
-		[self application:application handleOpenURL:launchURL];
-		return NO;
-	}*/
-
     
     
     return YES;
@@ -134,10 +117,8 @@
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
 	if ([[DBSession sharedSession] handleOpenURL:url]) {
 		if ([[DBSession sharedSession] isLinked]) {
-            //[rootViewController pushViewController:getStartedVC animated:YES];
             NSLog(@"App linked successfully!");
             [[NSNotificationCenter defaultCenter] postNotificationName:@"SESSION_AUTHENTICATED" object:self];
-
 		}
 		return YES;
 	}

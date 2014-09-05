@@ -27,6 +27,11 @@
 		3A39B99A19B7B154000CDB2A /* DSAlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A39B99919B7B154000CDB2A /* DSAlbumViewController.m */; };
 		3A39B99D19B88133000CDB2A /* DSPhotoThumbController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A39B99C19B88133000CDB2A /* DSPhotoThumbController.m */; };
 		3A39B9A019B89AD2000CDB2A /* DSPhotoSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A39B99F19B89AD2000CDB2A /* DSPhotoSelectionViewController.m */; };
+		3A9EBB0F19B9F1F000174825 /* DSDropboxAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A9EBB0E19B9F1F000174825 /* DSDropboxAPI.m */; };
+		3A9EBB1319BA157800174825 /* DSConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A9EBB1219BA157800174825 /* DSConstants.m */; };
+		3A9EBB1619BA1B1200174825 /* DSImageUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A9EBB1519BA1B1200174825 /* DSImageUtils.m */; };
+		3A9EBB1E19BA224A00174825 /* AGAlertViewWithProgressbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A9EBB1C19BA224A00174825 /* AGAlertViewWithProgressbar.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		3A9EBB1F19BA224A00174825 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 3A9EBB1D19BA224A00174825 /* LICENSE */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +73,15 @@
 		3A39B99C19B88133000CDB2A /* DSPhotoThumbController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSPhotoThumbController.m; sourceTree = "<group>"; };
 		3A39B99E19B89AD2000CDB2A /* DSPhotoSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSPhotoSelectionViewController.h; sourceTree = "<group>"; };
 		3A39B99F19B89AD2000CDB2A /* DSPhotoSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSPhotoSelectionViewController.m; sourceTree = "<group>"; };
+		3A9EBB0D19B9F1F000174825 /* DSDropboxAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSDropboxAPI.h; sourceTree = "<group>"; };
+		3A9EBB0E19B9F1F000174825 /* DSDropboxAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSDropboxAPI.m; sourceTree = "<group>"; };
+		3A9EBB1119BA157800174825 /* DSConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSConstants.h; sourceTree = "<group>"; };
+		3A9EBB1219BA157800174825 /* DSConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSConstants.m; sourceTree = "<group>"; };
+		3A9EBB1419BA1B1200174825 /* DSImageUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSImageUtils.h; sourceTree = "<group>"; };
+		3A9EBB1519BA1B1200174825 /* DSImageUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSImageUtils.m; sourceTree = "<group>"; };
+		3A9EBB1B19BA224A00174825 /* AGAlertViewWithProgressbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGAlertViewWithProgressbar.h; sourceTree = "<group>"; };
+		3A9EBB1C19BA224A00174825 /* AGAlertViewWithProgressbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGAlertViewWithProgressbar.m; sourceTree = "<group>"; };
+		3A9EBB1D19BA224A00174825 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,19 +147,15 @@
 		3A39B96319B75DA6000CDB2A /* MobiquityBox */ = {
 			isa = PBXGroup;
 			children = (
+				3A9EBB1919BA222300174825 /* ThirdPartyComponents */,
+				3A9EBB1019B9F3D400174825 /* Common */,
+				3A9EBB1819BA20DE00174825 /* Services */,
+				3A9EBB1719BA20CF00174825 /* ViewControllers */,
 				3A39B96C19B75DA6000CDB2A /* DSAppDelegate.h */,
 				3A39B96D19B75DA6000CDB2A /* DSAppDelegate.m */,
 				3A39B96F19B75DA6000CDB2A /* Main.storyboard */,
-				3A39B97219B75DA6000CDB2A /* DSGetStartedViewController.h */,
-				3A39B97319B75DA6000CDB2A /* DSGetStartedViewController.m */,
-				3A39B99819B7B154000CDB2A /* DSAlbumViewController.h */,
-				3A39B99919B7B154000CDB2A /* DSAlbumViewController.m */,
-				3A39B99B19B88133000CDB2A /* DSPhotoThumbController.h */,
-				3A39B99C19B88133000CDB2A /* DSPhotoThumbController.m */,
 				3A39B97519B75DA6000CDB2A /* Images.xcassets */,
 				3A39B96419B75DA6000CDB2A /* Supporting Files */,
-				3A39B99E19B89AD2000CDB2A /* DSPhotoSelectionViewController.h */,
-				3A39B99F19B89AD2000CDB2A /* DSPhotoSelectionViewController.m */,
 			);
 			path = MobiquityBox;
 			sourceTree = "<group>";
@@ -177,6 +187,59 @@
 				3A39B98519B75DA6000CDB2A /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3A9EBB1019B9F3D400174825 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				3A9EBB1119BA157800174825 /* DSConstants.h */,
+				3A9EBB1219BA157800174825 /* DSConstants.m */,
+				3A9EBB1419BA1B1200174825 /* DSImageUtils.h */,
+				3A9EBB1519BA1B1200174825 /* DSImageUtils.m */,
+			);
+			name = Common;
+			sourceTree = "<group>";
+		};
+		3A9EBB1719BA20CF00174825 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				3A39B97219B75DA6000CDB2A /* DSGetStartedViewController.h */,
+				3A39B97319B75DA6000CDB2A /* DSGetStartedViewController.m */,
+				3A39B99819B7B154000CDB2A /* DSAlbumViewController.h */,
+				3A39B99919B7B154000CDB2A /* DSAlbumViewController.m */,
+				3A39B99B19B88133000CDB2A /* DSPhotoThumbController.h */,
+				3A39B99C19B88133000CDB2A /* DSPhotoThumbController.m */,
+				3A39B99E19B89AD2000CDB2A /* DSPhotoSelectionViewController.h */,
+				3A39B99F19B89AD2000CDB2A /* DSPhotoSelectionViewController.m */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		3A9EBB1819BA20DE00174825 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				3A9EBB0D19B9F1F000174825 /* DSDropboxAPI.h */,
+				3A9EBB0E19B9F1F000174825 /* DSDropboxAPI.m */,
+			);
+			name = Services;
+			sourceTree = "<group>";
+		};
+		3A9EBB1919BA222300174825 /* ThirdPartyComponents */ = {
+			isa = PBXGroup;
+			children = (
+				3A9EBB1A19BA224A00174825 /* AGAlertViewWithProgressbar */,
+			);
+			name = ThirdPartyComponents;
+			sourceTree = "<group>";
+		};
+		3A9EBB1A19BA224A00174825 /* AGAlertViewWithProgressbar */ = {
+			isa = PBXGroup;
+			children = (
+				3A9EBB1B19BA224A00174825 /* AGAlertViewWithProgressbar.h */,
+				3A9EBB1C19BA224A00174825 /* AGAlertViewWithProgressbar.m */,
+				3A9EBB1D19BA224A00174825 /* LICENSE */,
+			);
+			path = AGAlertViewWithProgressbar;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,6 +321,7 @@
 			files = (
 				3A39B97619B75DA6000CDB2A /* Images.xcassets in Resources */,
 				3A39B96819B75DA6000CDB2A /* InfoPlist.strings in Resources */,
+				3A9EBB1F19BA224A00174825 /* LICENSE in Resources */,
 				3A39B97119B75DA6000CDB2A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -281,7 +345,11 @@
 				3A39B96A19B75DA6000CDB2A /* main.m in Sources */,
 				3A39B99A19B7B154000CDB2A /* DSAlbumViewController.m in Sources */,
 				3A39B97419B75DA6000CDB2A /* DSGetStartedViewController.m in Sources */,
+				3A9EBB1319BA157800174825 /* DSConstants.m in Sources */,
 				3A39B99D19B88133000CDB2A /* DSPhotoThumbController.m in Sources */,
+				3A9EBB1E19BA224A00174825 /* AGAlertViewWithProgressbar.m in Sources */,
+				3A9EBB1619BA1B1200174825 /* DSImageUtils.m in Sources */,
+				3A9EBB0F19B9F1F000174825 /* DSDropboxAPI.m in Sources */,
 				3A39B96E19B75DA6000CDB2A /* DSAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -495,6 +563,7 @@
 				3A39B98E19B75DA6000CDB2A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3A39B98F19B75DA6000CDB2A /* Build configuration list for PBXNativeTarget "MobiquityBoxTests" */ = {
 			isa = XCConfigurationList;
@@ -503,6 +572,7 @@
 				3A39B99119B75DA6000CDB2A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

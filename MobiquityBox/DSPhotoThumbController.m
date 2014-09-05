@@ -8,8 +8,9 @@
 
 #import "DSPhotoThumbController.h"
 #import <DropboxSDK/DropboxSDK.h>
+#import "DSDropboxAPI.h"
 
-@interface DSPhotoThumbController ()
+@interface DSPhotoThumbController ()<DSDropboxAPIDelegate>
 
 @end
 
@@ -29,14 +30,38 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.photoThumbImgView.image = self.thumbnail;
-    
+    //self.photoThumbImgView.image = self.thumbnail;
+    [[DSDropboxAPI sharedInstance] setDelegate:self];
+    [self loadImage];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+
+- (void)loadImage{
+    [[DSDropboxAPI sharedInstance] loadThumbnail:_currentPhotoPath ofSize:@"iphone_bestfit" intoPath:[self photoPath]];
+}
+
+//Temporary path where to put remote photo
+- (NSString*)photoPath {
+    return [NSTemporaryDirectory() stringByAppendingPathComponent:@"photo.jpg"];
+}
+
+
+
+#pragma mark - DSDropboxAPIDelegate Methods
+- (void)didDownloadThumbnail:(UIImage *)thumbnail inPath:(NSString *)destPath{
+    self.thumbnail = [UIImage imageWithContentsOfFile:destPath];
+    self.photoThumbImgView.image = self.thumbnail;
+}
+
+- (void)loadThumbnailFailedWithError:(NSError *)error{
+    //[self setWorking:NO];
+    //[self displayError];
 }
 
 

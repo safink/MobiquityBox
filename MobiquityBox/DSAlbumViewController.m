@@ -10,8 +10,9 @@
 #import "DSPhotoThumbController.h"
 #import "DSPhotoSelectionViewController.h"
 #import <DropboxSDK/DropboxSDK.h>
+#import "DSDropboxAPI.h"
 
-@interface DSAlbumViewController () <DBRestClientDelegate>
+@interface DSAlbumViewController () <DSDropboxAPIDelegate>
 
 @end
 
@@ -37,6 +38,8 @@
    
     self.title = @"Photo Album";
     
+    [[DSDropboxAPI sharedInstance] setDelegate:self];
+    
     //First time
     if (photoPaths == nil){
         [self fetchRemotePictures];
@@ -51,15 +54,12 @@
 
 
 - (void)viewWillAppear:(BOOL)animated{
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(uploadFileToDropbox:)
-                                                 name:@"UPLOAD_DROPBOX"
-                                               object:nil];
+//[[DSDropboxAPI sharedInstance] setDelegate:self];
 }
 
 
 - (void)viewWillDisappear:(BOOL)animated {
-    //restClient = nil;
+    //[[DSDropboxAPI sharedInstance] setDelegate:nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -75,20 +75,6 @@
     [self.navigationController pushViewController:photoSelectionVC animated:YES];
     
 }
-
-- (void)uploadFileToDropbox:(NSNotification *)notification{
-    
-    NSDictionary *imgMeta = notification.userInfo;
-    
-    NSString *imgName = (NSString *)[imgMeta valueForKey:@"filename"];
-    NSString *imgPath = (NSString *)[imgMeta valueForKey:@"filepath"];
-    NSLog(@"imgpath = %@",imgPath);
-
-    NSString *destDir = @"/";
-    [restClient uploadFile:imgName toPath:destDir withParentRev:nil fromPath:imgPath];
-}
-
-
 
 #pragma mark - Table view data source
 
@@ -132,68 +118,31 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     //To-Do: Check if selected cell is a directory
-    currentPhotoPath = [photoPaths objectAtIndex:indexPath.row];
-    [self.restClient loadThumbnail:currentPhotoPath ofSize:@"iphone_bestfit" intoPath:[self photoPath]];
+    DSPhotoThumbController *photoViewer = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"DSPhotoThumbController"];
     
+    [photoViewer setCurrentPhotoPath:[photoPaths objectAtIndex:indexPath.row]];
+    
+    [self.navigationController pushViewController:photoViewer animated:YES];
 }
 
 
 #pragma mark - Load directory and picture methods
 - (void)fetchRemotePictures{
     NSString *photosRoot = @"/";
-    [self.restClient loadMetadata:photosRoot withHash:photosHash];
-}
-
-//Temporary path where to put remote photo
-- (NSString*)photoPath {
-    return [NSTemporaryDirectory() stringByAppendingPathComponent:@"photo.jpg"];
+    [[DSDropboxAPI sharedInstance] loadMetadata:photosRoot withHash:photosHash];
 }
 
 
-#pragma mark - DBRestClient getter
-
-- (DBRestClient*)restClient {
-    if (restClient == nil) {
-        restClient = [[DBRestClient alloc] initWithSession:[DBSession sharedSession]];
-        restClient.delegate = self;
-    }
-    return restClient;
-}
-
-
-
-#pragma mark DBRestClientDelegate methods
-
-- (void)restClient:(DBRestClient*)client loadedMetadata:(DBMetadata*)metadata {
-
-    photosHash = metadata.hash;
-    
-    NSArray* validExtensions = [NSArray arrayWithObjects:@"jpg", @"jpeg", @"png", nil];
-    NSMutableArray* newPhotoPaths = [NSMutableArray new];
-    for (DBMetadata* child in metadata.contents) {
-        NSString* extension = [[child.path pathExtension] lowercaseString];
-        if (!child.isDirectory && [validExtensions indexOfObject:extension] != NSNotFound) {
-            [newPhotoPaths addObject:child.path];
-        }
-    }
-
+#pragma mark - DSDropboxAPIDelegate
+- (void)didLoadMetadata:(NSString *)currentHash withData:(NSArray *)data{
+    NSLog(@"Data loaded");
     //Added photos to the list
-    photoPaths = newPhotoPaths;
+    photosHash = currentHash;
+    photoPaths = data;
     [self.tableView reloadData];
+   
 }
-
-- (void)restClient:(DBRestClient*)client metadataUnchangedAtPath:(NSString*)path {
-    //[self loadRandomPhoto];
-}
-
-- (void)restClient:(DBRestClient*)client loadMetadataFailedWithError:(NSError*)error {
-    NSLog(@"restClient:loadMetadataFailedWithError: %@", [error localizedDescription]);
-    //[self displayError];
-    //[self setWorking:NO];
-}
-
-- (void)restClient:(DBRestClient*)client loadedThumbnail:(NSString*)destPath {
-    
+- (void)didDownloadThumbnail:(UIImage *)thumbnail inPath:(NSString *)destPath{
     UIImage *imageThumb = [UIImage imageWithContentsOfFile:destPath];
     
     DSPhotoThumbController *photoViewer = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"DSPhotoThumbController"];
@@ -201,15 +150,14 @@
     [photoViewer setThumbnail:imageThumb];
     
     [self.navigationController pushViewController:photoViewer animated:YES];
-    
-    //[self setWorking:NO];
-
 }
 
-- (void)restClient:(DBRestClient*)client loadThumbnailFailedWithError:(NSError*)error {
-    //[self setWorking:NO];
+- (void)loadMetadataFailedWithError:(NSError *)error{
+    NSLog(@"restClient:loadMetadataFailedWithError: %@", [error localizedDescription]);
     //[self displayError];
+    //[self setWorking:NO];
 }
+
 
 
 

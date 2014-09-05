@@ -11,10 +11,7 @@
 
 @class DBRestClient;
 
-@interface DSAlbumViewController : UITableViewController{
-    DBRestClient *restClient;
-}
+@interface DSAlbumViewController : UITableViewController
 
-@property (nonatomic,strong,readonly) DBRestClient *restClient;
 
 @end

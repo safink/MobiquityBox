@@ -7,13 +7,18 @@
 //
 
 #import "DSPhotoSelectionViewController.h"
+#import "DSDropboxAPI.h"
+#import "DSImageUtils.h"
+#import "AGAlertViewWithProgressbar.h"
 
 
-@interface DSPhotoSelectionViewController ()
+@interface DSPhotoSelectionViewController () <DSDropboxAPIDelegate>
 
 @end
 
-@implementation DSPhotoSelectionViewController
+@implementation DSPhotoSelectionViewController{
+    AGAlertViewWithProgressbar *alertViewWithProgressbar;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -31,12 +36,23 @@
     
     self.title = @"Photo Selection";
     
+    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
+    [self.view addGestureRecognizer:singleTap];
+    
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [[DSDropboxAPI sharedInstance] setDelegate:self];
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+    [[DSDropboxAPI sharedInstance] setDelegate:nil];
 }
 
 
@@ -117,16 +133,21 @@
 
 - (void)sharingPhotoActions:(NSInteger)buttonIndex{
     
+    NSString *filename = _txtPhotoFilename.text;
+    
+    //Display error (missing name)
+    if (!filename){
+        
+        [self missingPhotoName];
+        return;
+    }
+    
+    //else, process actionSheet
+    
     switch (buttonIndex) {
         case 0:{
-            //Dropbox upload
-            [self saveImage:_photoPlaceholder.image]; //saving to temporary directory
-            NSString *photoPath = [self getRecentImagePath];
-            
-            NSDictionary *photoMeta = [NSDictionary dictionaryWithObjects:@[@"test.png",photoPath] forKeys:@[@"filename",@"filepath"]];
-            
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"UPLOAD_DROPBOX" object:self userInfo:photoMeta];
-            
+            //Dropbox Upload image
+            [self uploadImageToDropbox:filename];
             break;
         }
         case 1:
@@ -136,6 +157,40 @@
             break;
     }
     
+}
+
+-(void)uploadImageToDropbox:(NSString *)filename{
+    
+    filename = [filename stringByAppendingString:@".png"];
+    
+    [DSImageUtils saveImage:_photoPlaceholder.image withName:filename];
+    NSString *photoPath = [DSImageUtils getRecentImagePath:filename];
+    
+    [self toggleSharingAvailability]; //disable "Share" avoiding multiple uploads
+    
+    //To-Do ability to cancel an upload
+    alertViewWithProgressbar = [[AGAlertViewWithProgressbar alloc] initWithTitle:@"Uploading Image." message:@"Please wait..." delegate:self cancelButtonTitle:nil otherButtonTitles:nil];
+    [alertViewWithProgressbar show];
+
+    [[DSDropboxAPI sharedInstance] uploadImage:filename toPath:@"/" withParentRev:nil fromPath:photoPath];
+    
+
+}
+
+- (void)missingPhotoName{
+    //UIalert with error
+}
+
+
+#pragma mark - UITextFieldDelegate Methods
+
+-(void)handleSingleTap:(UITapGestureRecognizer *)sender{
+    [_txtPhotoFilename resignFirstResponder];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [_txtPhotoFilename resignFirstResponder];
+    return NO;
 }
 
 #pragma mark - UIImagePickerControllerDelegate Methods
@@ -156,44 +211,33 @@
 }
 
 
-#pragma mark - Temporary solution for retrieving image and paths
-- (void)saveImage: (UIImage*)image
-{
-    if (image != nil)
-    {
-        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
-                                                             NSUserDomainMask, YES);
-        NSString *documentsDirectory = [paths objectAtIndex:0];
-        NSString* path = [documentsDirectory stringByAppendingPathComponent:
-                          @"test.png" ];
-        NSData* data = UIImagePNGRepresentation(image);
-        [data writeToFile:path atomically:YES];
-    }
+#pragma mark - DSDropboxAPIDelegate
+- (void)didUploadImage:(NSString *)destPath from:(NSString *)srcPath{
+    [alertViewWithProgressbar hide];
+    [self toggleSharingAvailability]; //enable share
+    
+    UIAlertView *success = [[UIAlertView alloc]
+                                initWithTitle:@"Success!" message:@"Your photo was uploaded successfully"
+                                delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    
+    [success show];
     
 }
 
-- (UIImage*)loadImage
-{
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
-                                                         NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0];
-    NSString* path = [documentsDirectory stringByAppendingPathComponent:
-                      @"test.png" ];
-    UIImage* image = [UIImage imageWithContentsOfFile:path];
-
-    return image;
+- (void)uploadProgress:(CGFloat)progress forFile:(NSString*)destPath from:(NSString*)srcPath{
+    NSLog(@"Photo Upload Progress = %f",progress);
+    alertViewWithProgressbar.progress += progress;
 }
 
-- (NSString *)getRecentImagePath{
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
-                                                         NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0];
-    NSString* path = [documentsDirectory stringByAppendingPathComponent:
-                      @"test.png" ];
-    return path;
+- (void)uploadImageFailedWithError:(NSError *)error{
+    [alertViewWithProgressbar hide];
+    [self toggleSharingAvailability]; //enable share
+    UIAlertView *success = [[UIAlertView alloc]
+                            initWithTitle:@"Sorry..." message:@"Your photo couldn't be uploaded. Please try again"
+                            delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    
+    [success show];
 }
-
-
 
 
 @end
